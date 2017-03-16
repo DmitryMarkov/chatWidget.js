@@ -1,0 +1,12 @@
+div.column-center.chat__app
+  div.login-false(class=username ? 'hidden' : '')
+    button.button-primary.chat__login-button Join chat
+  div.login-true(class=!username ? 'hidden' : '')
+    div.chat__header
+      i.fa.fa-user-circle-o.header__avatar
+      p.header__name Chat with Botik
+    div.chat__body
+      include chat-message-list.pug
+    div.chat__footer
+      form.chat__form(name='chat__form')
+        textarea#message(placeholder='Enter message...')

@@ -1,0 +1,9 @@
+div.modal.modal__chat.not-visible
+  div.modal__body
+    div.modal__content
+      form.chat-login(name='chat-login')
+        fieldset
+          label(for='name') Enter yo name
+          input#name(type='text' placeholder='name' required autofocus)
+        button.button-primary.m-l-1.float-right(type='submit') Enter chat
+        button.button-outline.float-right.modal__chat-close(type='button') Close

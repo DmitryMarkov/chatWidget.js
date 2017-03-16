@@ -1,0 +1,115 @@
+// Widget
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
+
+.chat {
+  transition-property: all;
+  transition-duration: 0.5s;
+  opacity: 1;
+
+  &__app {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    background-color: #f7f3f0;
+    background-image: url('chat-background2.jpg');
+    border-left: 1px solid $color-primary;
+
+    .login-false {
+      margin-top: auto;
+      margin-bottom: auto;
+    }
+
+    .login-true {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      flex: 1 1 auto;
+      max-width: 100%;
+      width: 100%;
+    }
+  }
+
+  &__header {
+    width: 100%;
+    background-color: $color-primary;
+    display: flex;
+    align-items: flex-start;
+    color: $color-initial;
+    height: 50px;
+    min-height: 50px;
+
+    .header__avatar {
+      margin: 10px;
+      font-size: 30px;
+    }
+
+    .header__name {
+      margin-top: 14px;
+      margin-bottom: -14px;
+      font-weight: 700;
+      flex: 1 1 auto;
+    }
+  }
+
+  &__body {
+    margin-top: auto;
+    margin-bottom: auto;
+    align-self: stretch;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    overflow-y: auto;
+  }
+
+  &__message {
+    margin: 6px;
+    padding: 6px 10px;
+    background-color: $color-initial;
+    border-radius: 0px 10px 10px 10px;
+    border: 1px solid #c0c0c0;
+    box-shadow: 0 2px 0px 0px rgba(0, 0, 0, .3);
+
+    .message__time {
+      font-weight: 700;
+      font-size: 0.7em;
+      color: #a0a0a0;
+    }
+
+    &-my {
+      align-self: flex-end;
+      border-radius: 10px 10px 0px 10px;
+      background-color: rgb(245, 230, 255);
+      border-color: rgba(155, 77, 202, .6);
+      box-shadow: 0 2px 0px 0px rgba(155, 77, 202, .6);
+      color: #333333;
+
+      .message__time {
+        color: rgb(179, 102, 226); // TODO: func of main color
+      }
+    }
+  }
+
+  &__footer {
+    width: 100%;
+    background-color: $color-primary;
+    padding: 3px 3px 3px 2px;
+  }
+
+  &__form {
+    margin-bottom: 0;
+
+    textarea {
+      margin: 0;
+      background-color: $color-initial;
+      border-color: $color-primary;
+
+      &:focus {
+        border-color: navy;
+      }
+    }
+  }
+}

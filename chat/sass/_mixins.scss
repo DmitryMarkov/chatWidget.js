@@ -1,0 +1,12 @@
+// Mixins
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
+
+@mixin flex-center () {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin transition-default () {
+  transition: all .3s ease;
+}
