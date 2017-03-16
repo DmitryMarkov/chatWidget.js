@@ -10,13 +10,13 @@
     }
 
     on (name, cb) {
-			this.el.addEventListener(name, cb)
-		}
+      this.el.addEventListener(name, cb)
+    }
 
     trigger (name, data) {
-			let event = new CustomEvent(name, { detail: data })
-			this.el.dispatchEvent(event)
-		}
+      let event = new CustomEvent(name, { detail: data })
+      this.el.dispatchEvent(event)
+    }
 
     reset (e) {
       this.el.reset()

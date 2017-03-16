@@ -21,6 +21,7 @@
   const LoginForm = window.LoginForm
   const MessageList = window.MessageList
   const MessageForm = window.MessageForm
+  const MessageService = window.MessageService
 
   class Chat {
     constructor (options) {
@@ -56,12 +57,13 @@
       this.messageList = new MessageList({
         el: this.el.querySelector('.chat__body')
       })
+      this.messageService = new MessageService({})
 
     }
 
     _botikAnswer (message) {
       setTimeout(() => {
-        this.messageList.addMessage({
+        this.messageService.addMessage({
           text: message ? message : botik_answers[Math.round(Math.random() * (botik_answers.length - 1))],
           my: false
         })
@@ -98,13 +100,13 @@
         this.el.querySelector('.login-false').classList.toggle('hidden')
         this.el.querySelector('.login-true').classList.toggle('hidden')
 
-        if (!this.messageList.getMessageList().length && this.userName) {
+        if (!this.messageService.getMessageList().length && this.userName) {
           this._botikAnswer(`Привет, ${this.userName}!`)
         }
       })
 
       this.messageForm.on('message', (e) => {
-        this.messageList.addMessage({
+        this.messageService.addMessage({
           text: e.detail.text,
           my: true
         })

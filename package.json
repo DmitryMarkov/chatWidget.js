@@ -1,0 +1,19 @@
+{
+  "name": "chatWidget.js",
+  "version": "0.0.1",
+  "description": "Test project in plain Javascript",
+  "main": "app.js",
+  "scripts": {
+    "start": "npm run pug_tmpl && ./node_modules/.bin/static .",
+    "pug_tmpl": "pug --client chat/templates/chat.pug --extension pug.js --name chat_tmpl",
+    "hint": "jshint **/*.js"
+  },
+  "keywords": [],
+  "author": "Dmitry Markov",
+  "license": "GPLv3",
+  "devDependencies": {
+    "jshint": "^2.9.4",
+    "node-static": "^0.7.9",
+    "pug": "^2.0.0-beta11"
+  }
+}
