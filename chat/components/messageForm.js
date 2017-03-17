@@ -1,4 +1,4 @@
-// jshint asi: true
+/* global CustomEvent */
 ;(function () {
   'use strict'
 
@@ -23,7 +23,7 @@
     }
 
     submitMessageForm (e) {
-      if (e.charCode == 13 && e.shiftKey === false) {
+      if (e.charCode === 13 && e.shiftKey === false) {
         e.preventDefault()
         this.trigger('message', { text: e.target.value })
         this.reset(e)
@@ -36,5 +36,4 @@
   }
 
   window.MessageForm = MessageForm
-
 })()

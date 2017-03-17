@@ -1,8 +1,8 @@
-// jshint asi: true
+/* global CustomEvent */
 ;(function () {
   'use strict'
 
-  const modal_tmpl = window.modal_tmpl
+  const modalTmpl = window.modal_tmpl
 
   class LoginForm {
     constructor (options) {
@@ -16,7 +16,7 @@
     }
 
     render () {
-      this.el.innerHTML = modal_tmpl()
+      this.el.innerHTML = modalTmpl()
 
       this.chatModal = this.el.querySelector('.modal__chat')
       this.chatModalClose = this.el.querySelector('.modal__chat-close')
@@ -52,5 +52,4 @@
   }
 
   window.LoginForm = LoginForm
-
 })()

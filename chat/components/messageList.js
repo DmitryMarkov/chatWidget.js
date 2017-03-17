@@ -1,8 +1,7 @@
-// jshint asi: true
 ;(function () {
   'use strict'
 
-  const chatml_tmpl = window.chatml_tmpl
+  const chatmlTmpl = window.chatml_tmpl
 
   class MessageList {
     constructor (options) {
@@ -11,7 +10,7 @@
     }
 
     render () {
-      this.el.innerHTML = chatml_tmpl({
+      this.el.innerHTML = chatmlTmpl({
         messages: this.messages
       })
     }
@@ -31,5 +30,4 @@
   }
 
   window.MessageList = MessageList
-
 })()

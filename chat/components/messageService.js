@@ -1,4 +1,3 @@
-// jshint asi: true
 ;(function () {
   'use strict'
 
@@ -22,5 +21,4 @@
   }
 
   window.MessageService = MessageService
-
 })()

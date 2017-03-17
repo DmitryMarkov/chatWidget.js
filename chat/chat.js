@@ -1,9 +1,9 @@
-// jshint asi: true
+/* global Audio */
 ;(function () {
   'use strict'
 
-  const chat_tmpl = window.chat_tmpl
-  const botik_answers = [
+  const chatTmpl = window.chat_tmpl
+  const botikAnswers = [
     'Расскажи мне что-нибудь',
     'Мне скучно',
     'О чем ты думаешь?',
@@ -32,7 +32,6 @@
       this.notification = new Audio('./chat/notification.mp3')
       this.sending = new Audio('./chat/sending.mp3')
 
-
       this.render()
       this._initComponents()
       this.el.appendChild(this.loginForm.el)
@@ -41,7 +40,7 @@
     }
 
     render () {
-      this.el.innerHTML = chat_tmpl({
+      this.el.innerHTML = chatTmpl({
         messages: this.messages,
         username: this.userName
       })
@@ -58,13 +57,12 @@
         el: this.el.querySelector('.chat__body')
       })
       this.messageService = new MessageService({})
-
     }
 
     _botikAnswer (message) {
       setTimeout(() => {
         this.messageService.addMessage({
-          text: message ? message : botik_answers[Math.round(Math.random() * (botik_answers.length - 1))],
+          text: message || botikAnswers[Math.round(Math.random() * (botikAnswers.length - 1))],
           my: false
         })
         this.messageList.render()
@@ -82,7 +80,6 @@
 
       this.el.classList.toggle('column-25')
       this.el.classList.toggle('column-0')
-
     }
 
     _initEvents () {
@@ -118,5 +115,4 @@
   }
 
   window.Chat = Chat
-
 })()

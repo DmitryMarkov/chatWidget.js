@@ -3,17 +3,32 @@
   "version": "0.0.1",
   "description": "Test project in plain Javascript",
   "main": "app.js",
+  "homepage": "https://dmitrymarkov.github.io/chatWidget.js",
+  "bugs": "https://github.com/DmitryMarkov/chatWidget.js/issues",
   "scripts": {
-    "start": "npm run pug_tmpl && ./node_modules/.bin/static .",
-    "pug_tmpl": "pug --client chat/templates/chat.pug --extension pug.js --name chat_tmpl",
-    "hint": "jshint **/*.js"
+    "start": "static .",
+    "pug": "pug --client chat/templates/chat.pug --extension pug.js --name chat_tmpl && pug --client chat/templates/modal.pug --extension pug.js --name modal_tmpl && pug --client chat/templates/chat-message-list.pug --extension pug.js --name chatml_tmpl",
+    "eslint": "./node_modules/.bin/eslint --quiet **/*.js; exit 0",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "sass --update chat/sass:chat",
+    "sass_watch": "sass --watch chat/sass:chat"
   },
-  "keywords": [],
+  "keywords": [
+    "javascript"
+  ],
   "author": "Dmitry Markov",
-  "license": "GPLv3",
+  "license": "GPL-3",
   "devDependencies": {
-    "jshint": "^2.9.4",
-    "node-static": "^0.7.9",
+    "eslint": "^3.17.1",
+    "eslint-config-standard": "^7.0.1",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-node": "^4.2.1",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^2.1.1",
     "pug": "^2.0.0-beta11"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DmitryMarkov/chatWidget.js.git"
   }
 }
