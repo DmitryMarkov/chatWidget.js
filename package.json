@@ -9,10 +9,8 @@
     "start": "npm run webpack",
     "webpack": "webpack-dev-server --open --history-api-fallback --inline --progress --hot",
     "build": "rimraf dist && webpack --bail --progress --profile --hide-modules",
-    "pug": "pug --client chat/templates/chat.pug --extension pug.js --name chat_tmpl && pug --client chat/templates/modal.pug --extension pug.js --name modal_tmpl && pug --client chat/templates/chat-message-list.pug --extension pug.js --name chatml_tmpl",
     "eslint": "./node_modules/.bin/eslint --quiet **/*.js; exit 0",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "static": "static .",
     "sass": "sass --update chat/sass:chat",
     "sass_watch": "sass --watch chat/sass:chat"
   },
@@ -20,7 +18,7 @@
     "javascript"
   ],
   "author": "Dmitry Markov",
-  "license": "GPL-3",
+  "license": "GPL-3.0",
   "devDependencies": {
     "babel-core": "^6.2.1",
     "babel-loader": "^6.2.0",

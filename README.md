@@ -24,11 +24,6 @@ run unit testing
 npm test
 ```
 
-generate pug templates
-```bash
-npm run pug
-```
-
 generate sass styles
 ```bash
 npm run sass
@@ -36,28 +31,37 @@ npm run sass
 
 ## TODO
 
+- [ ] refactor components structure + spec files + images, sound
+- [ ] check empty inputs
+- [ ] show/hide button component
 - [ ] textarea auto resize with text
-- [ ] use Firebase
 - [ ] last 30 messages
 - [ ] load more button
 - [ ] DataService class with fetch/json
+- [ ] use Firebase
 - [ ] Botik class
 - [ ] Event apply class
 - [ ] Util class: math.random, date frmatting
-- [ ] Optimize toggle chat
-- [ ] show/hide button component
-- [ ] replace emojis
 - [ ] date divider and proper date in message history
-- [ ] bem styles
-- [ ] accent corners
-- [ ] chat with me button closed
-- [ ] my own background
+- [ ] Optimize toggle chat
+- [ ] build dist and bundle
+- [ ] css include thru modules
+- [ ] valid bem styles
 - [ ] webpack extended conf: sass, file loader, uglify, eslint
 - [ ] generic form component with extends
 - [ ] JSDocs
 - [ ] Unit tests
+- [ ] loading... and button disables when fetching data
+- [ ] group chat
+- [ ] choose channels
+- [ ] generated avas
+- [ ] replace emojis
+- [ ] accent chat message corners
+- [ ] my own background
+- [ ] chat with me button closed
 - [ ] e2e tests
 - [ ] websockets
+- [ ] autoload previous messages - infinite scroll
 - [ ] pouchDB local cache
 - [ ] semver
 - [ ] travis-ci
