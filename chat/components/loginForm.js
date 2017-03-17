@@ -1,55 +1,51 @@
 /* global CustomEvent */
-;(function () {
-  'use strict'
+import modalTmpl from '../templates/modal.pug'
 
-  const modalTmpl = window.modal_tmpl
+class LoginForm {
+  constructor (options) {
+    this.el = options.el
 
-  class LoginForm {
-    constructor (options) {
-      this.el = options.el
+    this.render()
 
-      this.render()
+    this.toggleModal = this.toggleModal.bind(this)
 
-      this.toggleModal = this.toggleModal.bind(this)
-
-      this._initEvents()
-    }
-
-    render () {
-      this.el.innerHTML = modalTmpl()
-
-      this.chatModal = this.el.querySelector('.modal__chat')
-      this.chatModalClose = this.el.querySelector('.modal__chat-close')
-      this.chatModalSubmit = this.el.querySelector('.chat-login')
-    }
-
-    on (name, cb) {
-      this.el.addEventListener(name, cb)
-    }
-
-    trigger (name, data) {
-      let event = new CustomEvent(name, { detail: data })
-      this.el.dispatchEvent(event)
-    }
-
-    toggleModal (e) {
-      e.preventDefault()
-
-      this.chatModal.classList.toggle('not-visible')
-    }
-
-    submitLoginForm (e) {
-      e.preventDefault()
-
-      this.trigger('login', { username: e.target.name.value })
-      this.toggleModal(e)
-    }
-
-    _initEvents () {
-      this.chatModalClose.addEventListener('click', this.toggleModal)
-      this.chatModalSubmit.addEventListener('submit', this.submitLoginForm.bind(this))
-    }
+    this._initEvents()
   }
 
-  window.LoginForm = LoginForm
-})()
+  render () {
+    this.el.innerHTML = modalTmpl()
+
+    this.chatModal = this.el.querySelector('.modal__chat')
+    this.chatModalClose = this.el.querySelector('.modal__chat-close')
+    this.chatModalSubmit = this.el.querySelector('.chat-login')
+  }
+
+  on (name, cb) {
+    this.el.addEventListener(name, cb)
+  }
+
+  trigger (name, data) {
+    let event = new CustomEvent(name, { detail: data })
+    this.el.dispatchEvent(event)
+  }
+
+  toggleModal (e) {
+    e.preventDefault()
+
+    this.chatModal.classList.toggle('not-visible')
+  }
+
+  submitLoginForm (e) {
+    e.preventDefault()
+
+    this.trigger('login', { username: e.target.name.value })
+    this.toggleModal(e)
+  }
+
+  _initEvents () {
+    this.chatModalClose.addEventListener('click', this.toggleModal)
+    this.chatModalSubmit.addEventListener('submit', this.submitLoginForm.bind(this))
+  }
+}
+
+export default LoginForm

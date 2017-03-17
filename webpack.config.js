@@ -1,7 +1,9 @@
 'use strict'
 
 /* eslint-disable no-unused-vars */
+let path = require('path')
 let webpack = require('webpack')
+let appRoot = path.resolve(__dirname, '/dist')
 
 module.exports = (function makeWebpackConfig () {
   let config = {}
@@ -10,9 +12,8 @@ module.exports = (function makeWebpackConfig () {
     app: './app.js'
   }
 
-  /* eslint-disable no-path-concat */
   config.output = {
-    path: __dirname + '/dist',
+    path: appRoot,
     filename: '[name].bundle.js',
     chunkFilename: '[name].bundle.js'
   }
@@ -20,11 +21,17 @@ module.exports = (function makeWebpackConfig () {
   config.devtool = 'inline-source-map'
 
   config.module = {
-    rules: [{
-      test: /\.js$/,
-      loader: 'babel-loader',
-      exclude: /node_modules/
-    }]
+    rules: [
+      {
+        test: /\.js$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/
+      },
+      {
+        test: /\.pug$/,
+        loader: 'pug-loader'
+      }
+    ]
   }
 
   config.devServer = {

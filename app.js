@@ -1,8 +1,6 @@
-;(function () {
-  'use strict'
+import Chat from './chat/chat'
 
-  /* eslint-disable no-new */
-  new window.Chat({
-    el: document.querySelector('.chat')
-  })
-})()
+/* eslint-disable no-new */
+new Chat({
+  el: '.chat'
+})

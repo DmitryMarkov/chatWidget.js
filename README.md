@@ -38,12 +38,12 @@ npm run sass
 
 - [ ] textarea auto resize with text
 - [ ] use Firebase
-- [ ] es6 modules
 - [ ] last 30 messages
 - [ ] load more button
 - [ ] DataService class with fetch/json
 - [ ] Botik class
 - [ ] Event apply class
+- [ ] Util class: math.random, date frmatting
 - [ ] Optimize toggle chat
 - [ ] show/hide button component
 - [ ] replace emojis
@@ -52,8 +52,9 @@ npm run sass
 - [ ] accent corners
 - [ ] chat with me button closed
 - [ ] my own background
-- [ ] webpack extended conf: pug, sass, files, uglify
+- [ ] webpack extended conf: sass, file loader, uglify, eslint
 - [ ] generic form component with extends
+- [ ] JSDocs
 - [ ] Unit tests
 - [ ] e2e tests
 - [ ] websockets
@@ -63,3 +64,4 @@ npm run sass
 - [x] Move to my repo
 - [x] eslint with standard setting
 - [x] webpack conf
+- [x] es6 modules
