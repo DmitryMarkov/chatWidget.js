@@ -61,7 +61,7 @@
 
     _botikAnswer (message) {
       setTimeout(() => {
-        this.messageService.addMessage({
+        this.messageList.addMessage({
           text: message || botikAnswers[Math.round(Math.random() * (botikAnswers.length - 1))],
           my: false
         })
@@ -97,13 +97,13 @@
         this.el.querySelector('.login-false').classList.toggle('hidden')
         this.el.querySelector('.login-true').classList.toggle('hidden')
 
-        if (!this.messageService.getMessageList().length && this.userName) {
+        if (!this.messageList.getMessageList().length && this.userName) {
           this._botikAnswer(`Привет, ${this.userName}!`)
         }
       })
 
       this.messageForm.on('message', (e) => {
-        this.messageService.addMessage({
+        this.messageList.addMessage({
           text: e.detail.text,
           my: true
         })

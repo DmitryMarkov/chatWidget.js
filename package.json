@@ -6,10 +6,13 @@
   "homepage": "https://dmitrymarkov.github.io/chatWidget.js",
   "bugs": "https://github.com/DmitryMarkov/chatWidget.js/issues",
   "scripts": {
-    "start": "static .",
+    "start": "npm run static",
+    "webpack": "webpack-dev-server --history-api-fallback --inline --progress",
+    "build": "rimraf dist && webpack --bail --progress --profile",
     "pug": "pug --client chat/templates/chat.pug --extension pug.js --name chat_tmpl && pug --client chat/templates/modal.pug --extension pug.js --name modal_tmpl && pug --client chat/templates/chat-message-list.pug --extension pug.js --name chatml_tmpl",
     "eslint": "./node_modules/.bin/eslint --quiet **/*.js; exit 0",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "static": "static .",
     "sass": "sass --update chat/sass:chat",
     "sass_watch": "sass --watch chat/sass:chat"
   },
@@ -20,12 +23,19 @@
   "license": "GPL-3",
   "devDependencies": {
     "eslint": "^3.17.1",
+    "babel-core": "^6.2.1",
+    "babel-loader": "^6.2.0",
+    "babel-preset-es2015": "^6.1.18",
+    "babel-preset-stage-2": "^6.22.0",
     "eslint-config-standard": "^7.0.1",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-node": "^4.2.1",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^2.1.1",
-    "pug": "^2.0.0-beta11"
+    "rimraf": "^2.5.1",
+    "pug": "^2.0.0-beta11",
+    "webpack": "2.2.0",
+    "webpack-dev-server": "2.2.0"
   },
   "repository": {
     "type": "git",

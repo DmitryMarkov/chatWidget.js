@@ -2,44 +2,39 @@
 
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com)
 
-### DEMO
+## Demo
 
 https://dmitrymarkov.github.io/chatWidget.js/
 
-### COMMANDS
+## Commands
 
-#### run
 
 After you have installed all dependencies you can now run the app with:
 ```bash
 npm start
 ```
 
-#### lint
-
+lint project files
 ```bash
 npm run eslint
 ```
 
-#### unit test
-
+run unit testing
 ```bash
 npm test
 ```
 
-#### generate pug templates
-
+generate pug templates
 ```bash
 npm run pug
 ```
 
-#### generate sass templates
-
+generate sass styles
 ```bash
 npm run sass
 ```
 
-### TODO
+## TODO
 
 - [ ] textarea auto resize with text
 - [ ] use Firebase
@@ -57,7 +52,7 @@ npm run sass
 - [ ] accent corners
 - [ ] chat with me button closed
 - [ ] my own background
-- [ ] webpack conf
+- [ ] webpack extended conf: pug, sass, files, uglify
 - [ ] generic form component with extends
 - [ ] Unit tests
 - [ ] e2e tests
@@ -67,3 +62,4 @@ npm run sass
 - [ ] travis-ci
 - [x] Move to my repo
 - [x] eslint with standard setting
+- [x] webpack conf
