@@ -73,37 +73,38 @@ class Chat {
     }, 1500)
   }
 
+  _onLogin (e) {
+    this.userName = e.detail.username
+    window.sessionStorage.setItem('chatWidgetName', this.userName)
+
+    this.el.querySelector('.login-false').classList.toggle('hidden')
+    this.el.querySelector('.login-true').classList.toggle('hidden')
+
+    if (!this.messageList.getMessageList().length && this.userName) {
+      this._botikAnswer(`Привет, ${this.userName}!`)
+    }
+  }
+
+  _onMessage (e) {
+    this.messageList.addMessage({
+      text: e.detail.text,
+      my: true
+    })
+    this.messageList.render()
+    this._botikAnswer()
+    this.audioService.play('send_message')
+  }
+
   _initEvents () {
     // this.chatShowHideButton = document.querySelector('.button__show-chat')
-    this.chatLoginButton = this.el.querySelector('.chat__login-button')
-
     // toggleChat
     // this.chatShowHideButton.addEventListener('click', this._showHideChat.bind(this))
 
-    this.chatLoginButton.addEventListener('click', this.loginForm.toggleModal)
+    this.el.querySelector('.chat__login-button').addEventListener('click', this.loginForm.toggleModal)
 
-    // move func to inner func.bind(this)
-    this.loginForm.on('login', (e) => {
-      this.userName = e.detail.username
-      window.sessionStorage.setItem('chatWidgetName', this.userName)
+    this.loginForm.on('login', this._onLogin.bind(this))
 
-      this.el.querySelector('.login-false').classList.toggle('hidden')
-      this.el.querySelector('.login-true').classList.toggle('hidden')
-
-      if (!this.messageList.getMessageList().length && this.userName) {
-        this._botikAnswer(`Привет, ${this.userName}!`)
-      }
-    })
-
-    this.messageForm.on('message', (e) => {
-      this.messageList.addMessage({
-        text: e.detail.text,
-        my: true
-      })
-      this.messageList.render()
-      this._botikAnswer()
-      this.audioService.play('send_message')
-    })
+    this.messageForm.on('message', this._onMessage.bind(this))
   }
 }
 

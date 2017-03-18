@@ -32,8 +32,6 @@ npm run sass
 ## TODO
 
 - [ ] Optimize toggle chat
-- [ ] show/hide button component with option el
-- [ ] chat with me button closed setting (default: false)
 - [ ] Botik class
 - [ ] chat inside mill column
 - [ ] DataService class with fetch/json
@@ -42,6 +40,7 @@ npm run sass
 - [ ] load more button
 - [ ] date divider and proper date in message history
 - [ ] build dist and bundle
+- [ ] add dist to repo
 - [ ] valid bem styles
 - [ ] webpack extended conf: sass, file loader, uglify, eslint
 - [ ] css include thru components
@@ -64,5 +63,6 @@ npm run sass
 - [ ] chat menu - about, settings
 - [ ] security and publish check-list
 - [ ] pouchDB local cache
+- [ ] readme usage and requirements
 - [ ] semver
 - [ ] travis-ci

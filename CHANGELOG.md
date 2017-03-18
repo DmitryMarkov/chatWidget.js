@@ -13,6 +13,8 @@ There is no Semantic Versioning yet
 - [x] Util class: math.random, date frmatting
 - [x] Event apply class
 - [x] check empty inputs
+- [x] chat with me button closed setting (default: false)
+- [x] show/hide button component with option el
 
 #### 0.0.1 - 2017-03-13
 
