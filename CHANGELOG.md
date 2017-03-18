@@ -2,6 +2,18 @@
 
 There is no Semantic Versioning yet
 
+#### 0.0.2 - 2017-03-20
+
+- [x] Move to my repo
+- [x] eslint with standard setting
+- [x] webpack conf
+- [x] es6 modules
+- [x] refactor components structure + pug + spec files + images, sound + common
+- [x] AudioService
+- [x] Util class: math.random, date frmatting
+- [x] Event apply class
+- [x] check empty inputs
+
 #### 0.0.1 - 2017-03-13
 
 - [x] overflow-y

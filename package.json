@@ -11,8 +11,8 @@
     "build": "rimraf dist && webpack --bail --progress --profile --hide-modules",
     "eslint": "./node_modules/.bin/eslint --quiet **/*.js; exit 0",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "sass": "sass --update chat/sass:dist",
-    "sass:watch": "sass --watch chat/sass:dist"
+    "sass": "sass --update chat:dist",
+    "sass:watch": "sass --watch chat:dist"
   },
   "keywords": [
     "javascript"

@@ -3,5 +3,6 @@ import Chat from './chat/main'
 /* eslint-disable no-new */
 new Chat({
   el: '.chat',
-  butttonEl: '.website'
+  buttonEl: '.website', // element to append chat toogle button. Must be relative.
+  isOpenedOnStart: true // default value
 })

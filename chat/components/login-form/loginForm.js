@@ -1,9 +1,14 @@
-/* global CustomEvent */
 import modalTmpl from './modal.pug'
 
 class LoginForm {
-  constructor (options) {
-    this.el = options.el
+  constructor ({
+    el,
+    EventMixin
+  }) {
+    // adding on() and trigger() methods
+    EventMixin.apply(this)
+
+    this.el = el
 
     this.render()
 
@@ -18,15 +23,6 @@ class LoginForm {
     this.chatModal = this.el.querySelector('.modal__chat')
     this.chatModalClose = this.el.querySelector('.modal__chat-close')
     this.chatModalSubmit = this.el.querySelector('.chat-login')
-  }
-
-  on (name, cb) {
-    this.el.addEventListener(name, cb)
-  }
-
-  trigger (name, data) {
-    let event = new CustomEvent(name, { detail: data })
-    this.el.dispatchEvent(event)
   }
 
   toggleModal (e) {

@@ -31,35 +31,33 @@ npm run sass
 
 ## TODO
 
-- [ ] check empty inputs
-- [ ] Util class: math.random, date frmatting
+- [ ] Optimize toggle chat
 - [ ] show/hide button component with option el
+- [ ] chat with me button closed setting (default: false)
+- [ ] Botik class
 - [ ] chat inside mill column
-- [ ] last 30 messages
-- [ ] load more button
 - [ ] DataService class with fetch/json
 - [ ] use Firebase
-- [ ] Botik class
-- [ ] Event apply class
+- [ ] last 30 messages
+- [ ] load more button
 - [ ] date divider and proper date in message history
-- [ ] Optimize toggle chat
 - [ ] build dist and bundle
-- [ ] css include thru modules
 - [ ] valid bem styles
 - [ ] webpack extended conf: sass, file loader, uglify, eslint
-- [ ] generic form component with extends
+- [ ] css include thru components
+- [ ] generic form component with extends (?)
 - [ ] JSDocs
 - [ ] docs for widget usage
 - [ ] Unit tests
 - [ ] textarea auto resize with text
 - [ ] loading... and button disables when fetching data
 - [ ] group chat
-- [ ] choose channels
+- [ ] choose channels #general #botik p2p
+- [ ] user lists and p2p choose
 - [ ] generated avas
 - [ ] replace emojis
 - [ ] accent chat message corners
 - [ ] my own background
-- [ ] chat with me button closed
 - [ ] e2e tests
 - [ ] websockets
 - [ ] autoload previous messages - infinite scroll
@@ -68,9 +66,3 @@ npm run sass
 - [ ] pouchDB local cache
 - [ ] semver
 - [ ] travis-ci
-- [x] Move to my repo
-- [x] eslint with standard setting
-- [x] webpack conf
-- [x] es6 modules
-- [x] refactor components structure + pug + spec files + images, sound + common
-- [x] AudioService

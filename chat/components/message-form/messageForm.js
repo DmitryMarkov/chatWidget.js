@@ -1,19 +1,14 @@
-/* global CustomEvent */
-
 class MessageForm {
-  constructor (options) {
-    this.el = options.el
+  constructor ({
+    el,
+    EventMixin
+  }) {
+    // adding on() and trigger() methods
+    EventMixin.apply(this)
+
+    this.el = el
     this.messageTextarea = this.el.querySelector('#message')
     this._initEvents()
-  }
-
-  on (name, cb) {
-    this.el.addEventListener(name, cb)
-  }
-
-  trigger (name, data) {
-    let event = new CustomEvent(name, { detail: data })
-    this.el.dispatchEvent(event)
   }
 
   reset (e) {
@@ -21,10 +16,13 @@ class MessageForm {
   }
 
   submitMessageForm (e) {
+    console.log(e.shiftKey, e.ctrlKey)
     if (e.charCode === 13 && e.shiftKey === false) {
       e.preventDefault()
-      this.trigger('message', { text: e.target.value })
-      this.reset(e)
+      if (e.target.value.trim()) {
+        this.trigger('message', { text: e.target.value })
+        this.reset(e)
+      }
     }
   }
 
