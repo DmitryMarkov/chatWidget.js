@@ -31,18 +31,16 @@ npm run sass
 
 ## TODO
 
-- [ ] refactor components structure + pug + spec files + images, sound + common
 - [ ] check empty inputs
+- [ ] Util class: math.random, date frmatting
 - [ ] show/hide button component with option el
 - [ ] chat inside mill column
-- [ ] textarea auto resize with text
 - [ ] last 30 messages
 - [ ] load more button
 - [ ] DataService class with fetch/json
 - [ ] use Firebase
 - [ ] Botik class
 - [ ] Event apply class
-- [ ] Util class: math.random, date frmatting
 - [ ] date divider and proper date in message history
 - [ ] Optimize toggle chat
 - [ ] build dist and bundle
@@ -51,8 +49,9 @@ npm run sass
 - [ ] webpack extended conf: sass, file loader, uglify, eslint
 - [ ] generic form component with extends
 - [ ] JSDocs
-- [ ] docs for usage
+- [ ] docs for widget usage
 - [ ] Unit tests
+- [ ] textarea auto resize with text
 - [ ] loading... and button disables when fetching data
 - [ ] group chat
 - [ ] choose channels
@@ -73,3 +72,5 @@ npm run sass
 - [x] eslint with standard setting
 - [x] webpack conf
 - [x] es6 modules
+- [x] refactor components structure + pug + spec files + images, sound + common
+- [x] AudioService

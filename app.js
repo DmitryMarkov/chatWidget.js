@@ -1,4 +1,4 @@
-import Chat from './chat/chat'
+import Chat from './chat/main'
 
 /* eslint-disable no-new */
 new Chat({

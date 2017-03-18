@@ -1,9 +1,9 @@
-/* global Audio */
-import chatTmpl from './chat.pug'
+import chatTmpl from './main.pug'
 import LoginForm from './components/login-form/loginForm'
 import MessageList from './components/message-list/messageList'
 import MessageForm from './components/message-form/messageForm'
 import MessageService from './services/messageService'
+import AudioService from './services/audioService'
 
 const botikAnswers = [
   'Расскажи мне что-нибудь',
@@ -23,11 +23,10 @@ const botikAnswers = [
 class Chat {
   constructor (options) {
     this.el = document.querySelector(options.el)
+    this.buttonEl = document.querySelector(options.buttonEl)
 
     this.userName = window.sessionStorage.getItem('chatWidgetName') || null
     this.messages = JSON.parse(window.sessionStorage.getItem('chatHistory') || '[]')
-    this.notification = new Audio('./chat/assets/sounds/notification.mp3')
-    this.sending = new Audio('./chat/assets/sounds/sending.mp3')
 
     this.render()
     this._initComponents()
@@ -54,6 +53,7 @@ class Chat {
       el: this.el.querySelector('.chat__body')
     })
     this.messageService = new MessageService({})
+    this.audioService = new AudioService()
   }
 
   _botikAnswer (message) {
@@ -63,7 +63,7 @@ class Chat {
         my: false
       })
       this.messageList.render()
-      this.notification.play()
+      this.audioService.play('receive_message')
     }, 1500)
   }
 
@@ -106,7 +106,7 @@ class Chat {
       })
       this.messageList.render()
       this._botikAnswer()
-      this.sending.play()
+      this.audioService.play('send_message')
     })
   }
 }
