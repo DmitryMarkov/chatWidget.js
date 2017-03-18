@@ -31,9 +31,10 @@ npm run sass
 
 ## TODO
 
-- [ ] refactor components structure + spec files + images, sound
+- [ ] refactor components structure + pug + spec files + images, sound + common
 - [ ] check empty inputs
-- [ ] show/hide button component
+- [ ] show/hide button component with option el
+- [ ] chat inside mill column
 - [ ] textarea auto resize with text
 - [ ] last 30 messages
 - [ ] load more button
@@ -50,6 +51,7 @@ npm run sass
 - [ ] webpack extended conf: sass, file loader, uglify, eslint
 - [ ] generic form component with extends
 - [ ] JSDocs
+- [ ] docs for usage
 - [ ] Unit tests
 - [ ] loading... and button disables when fetching data
 - [ ] group chat
@@ -62,6 +64,8 @@ npm run sass
 - [ ] e2e tests
 - [ ] websockets
 - [ ] autoload previous messages - infinite scroll
+- [ ] chat menu - about, settings
+- [ ] security and publish check-list
 - [ ] pouchDB local cache
 - [ ] semver
 - [ ] travis-ci

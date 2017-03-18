@@ -1,9 +1,9 @@
 /* global Audio */
-import chatTmpl from './templates/chat.pug'
-import LoginForm from './components/loginForm'
-import MessageList from './components/messageList'
-import MessageForm from './components/messageForm'
-import MessageService from './components/messageService'
+import chatTmpl from './chat.pug'
+import LoginForm from './components/login-form/loginForm'
+import MessageList from './components/message-list/messageList'
+import MessageForm from './components/message-form/messageForm'
+import MessageService from './services/messageService'
 
 const botikAnswers = [
   'Расскажи мне что-нибудь',
@@ -26,8 +26,8 @@ class Chat {
 
     this.userName = window.sessionStorage.getItem('chatWidgetName') || null
     this.messages = JSON.parse(window.sessionStorage.getItem('chatHistory') || '[]')
-    this.notification = new Audio('./chat/notification.mp3')
-    this.sending = new Audio('./chat/sending.mp3')
+    this.notification = new Audio('./chat/assets/sounds/notification.mp3')
+    this.sending = new Audio('./chat/assets/sounds/sending.mp3')
 
     this.render()
     this._initComponents()

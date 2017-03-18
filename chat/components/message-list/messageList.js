@@ -1,4 +1,4 @@
-import chatmlTmpl from '../templates/chat-message-list.pug'
+import chatmlTmpl from './chat-message-list.pug'
 
 class MessageList {
   constructor (options) {

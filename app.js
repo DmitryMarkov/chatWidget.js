@@ -2,5 +2,6 @@ import Chat from './chat/chat'
 
 /* eslint-disable no-new */
 new Chat({
-  el: '.chat'
+  el: '.chat',
+  butttonEl: '.website'
 })

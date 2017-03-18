@@ -1,7 +1,7 @@
 {
   "name": "chatWidget.js",
   "version": "0.0.1",
-  "description": "Test project in plain Javascript",
+  "description": "Chat Widget in vanilla Javascript",
   "main": "app.js",
   "homepage": "https://dmitrymarkov.github.io/chatWidget.js",
   "bugs": "https://github.com/DmitryMarkov/chatWidget.js/issues",
@@ -11,14 +11,15 @@
     "build": "rimraf dist && webpack --bail --progress --profile --hide-modules",
     "eslint": "./node_modules/.bin/eslint --quiet **/*.js; exit 0",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "sass": "sass --update chat/sass:chat",
-    "sass_watch": "sass --watch chat/sass:chat"
+    "sass": "sass --update chat/sass:dist",
+    "sass:watch": "sass --watch chat/sass:dist"
   },
   "keywords": [
     "javascript"
   ],
   "author": "Dmitry Markov",
   "license": "GPL-3.0",
+  "dependencies": {},
   "devDependencies": {
     "babel-core": "^6.2.1",
     "babel-loader": "^6.2.0",

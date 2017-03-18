@@ -1,5 +1,5 @@
 /* global CustomEvent */
-import modalTmpl from '../templates/modal.pug'
+import modalTmpl from './modal.pug'
 
 class LoginForm {
   constructor (options) {
