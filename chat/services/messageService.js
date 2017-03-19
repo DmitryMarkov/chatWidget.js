@@ -1,30 +1,27 @@
+/* global fetch */
 import { storeService } from './storeService'
 
 class MessageService {
-  constructor (options) {
-    this.messages = storeService.getJSON('chatHistory')
+  constructor ({
+    baseUrl
+  }) {
+    this.baseUrl = baseUrl
+  }
+
+  _request () {
+    return fetch('chat/services/mockMessages.json')
+      .then((response) => response.json())
+      .catch((err) => {
+        console.log(err)
+      })
   }
 
   getMessageList () {
-//    if (!this.messages.length) {
-//      this.messages = [
-//        {
-//          "text": "Привет, как дела?",
-//          "my": false,
-//          "date": "12:59"
-//        },
-//        {
-//          "text": "Нормально",
-//          "my": true,
-//          "date": "13:01"
-//        }
-//      ]
-//    }
-    return this.messages
+    return this._request()
   }
 
   saveMessages (messages) {
-    this.messages = messages
+    // this.messages = messages
     storeService.setJSON('chatHistory', messages)
   }
 }

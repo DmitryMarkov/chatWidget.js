@@ -20,15 +20,20 @@ class Chat {
     this.buttonEl = document.querySelector(buttonEl)
     this.isOpenedOnStart = isOpenedOnStart
 
-    // TODO get from service
+    this._initServices()
     this.userName = storeService.getItem('chatWidgetName')
-    this.messages = storeService.getJSON('chatHistory')
 
-    this.render()
-    this._initComponents()
-    this.el.appendChild(this.loginForm.el)
+    this.messageService.getMessageList()
+      .then((res) => {
+        this.messages = res || []
+        this.render()
+        this._initComponents()
+        if (!this.userName) {
+          this.el.appendChild(this.loginForm.el)
+        }
 
-    this._initEvents()
+        this._initEvents()
+      })
   }
 
   render () {
@@ -41,17 +46,23 @@ class Chat {
     }
   }
 
-  _initComponents () {
-    this.messageService = new MessageService({})
+  _initServices () {
+    this.messageService = new MessageService({
+      baseUrl: 'https://components-1601-1930.firebaseio.com/chat/messages.json'
+    })
     this.audioService = new AudioService()
     this.botikService = new BotikService()
+  }
 
+  _initComponents () {
     this.chatButton = new ChatButton({
       el: document.createElement('div'),
       parentEl: this.buttonEl,
       isOpenedOnStart: this.isOpenedOnStart,
       EventMixin
     })
+
+    // maybe we should not create instance if already logged in
     this.loginForm = new LoginForm({
       el: document.createElement('div'),
       EventMixin
@@ -62,6 +73,7 @@ class Chat {
     })
     this.messageList = new MessageList({
       el: this.el.querySelector('.chat__body'),
+      messages: this.messages,
       messageService: this.messageService
     })
 
@@ -73,8 +85,10 @@ class Chat {
   }
 
   _initEvents () {
-    // do we need to add listeners to hidden elements? maybe on state change?
-    this.el.querySelector('.chat__login-button').addEventListener('click', this.loginForm.toggleModal)
+    if (!this.userName) {
+      this.el.querySelector('.chat__login-button').addEventListener('click', this.loginForm.toggleModal)
+    }
+
     this.loginForm.on('login', this._onLogin.bind(this))
 
     this.messageForm.on('message', this._onMessage.bind(this))
@@ -89,7 +103,7 @@ class Chat {
     this.el.querySelector('.login-false').classList.toggle('hidden')
     this.el.querySelector('.login-true').classList.toggle('hidden')
 
-    if (!this.messageList.getMessageList().length && this.userName) {
+    if (!this.messages.length && this.userName) {
       this.botik.answer(`Привет, ${this.userName}!`)
     }
   }

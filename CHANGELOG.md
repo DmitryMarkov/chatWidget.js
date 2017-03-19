@@ -17,6 +17,7 @@ There is no Semantic Versioning yet
 - [x] show/hide button component with option el
 - [x] Optimize toggle chat
 - [x] Botik class
+- [x] DataService class with fetch/json
 
 #### 0.0.1 - 2017-03-13
 

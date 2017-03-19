@@ -3,11 +3,12 @@ import chatmlTmpl from './chat-message-list.pug'
 class MessageList {
   constructor ({
     el,
+    messages,
     messageService
   }) {
     this.el = el
     this.messageService = messageService
-    this.messages = this.messageService.getMessageList()
+    this.messages = messages
   }
 
   render () {
@@ -16,10 +17,9 @@ class MessageList {
     })
   }
 
-  /* to service */
-  getMessageList () {
-    return this.messages
-  }
+//  getMessageList () {
+//    return this.messages
+//  }
 
   addMessage (data) {
     this.messages.unshift({ // unshift is no good
@@ -28,7 +28,6 @@ class MessageList {
       date: new Date().getHours() + ':' + new Date().getMinutes()
     })
     this.messageService.saveMessages(this.messages)
-    // window.sessionStorage.setItem('chatHistory', JSON.stringify(this.messages))
   }
 }
 
