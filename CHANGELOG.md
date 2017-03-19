@@ -18,6 +18,10 @@ There is no Semantic Versioning yet
 - [x] Optimize toggle chat
 - [x] Botik class
 - [x] DataService class with fetch/json
+- [x] catch fetch andd fallback to localStore
+- [x] add dist to repo
+- [x] build dist and bundle
+- [x] css include thru components
 
 #### 0.0.1 - 2017-03-13
 

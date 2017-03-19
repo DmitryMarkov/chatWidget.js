@@ -13,6 +13,7 @@ class MessageService {
       .then((response) => response.json())
       .catch((err) => {
         console.log(err)
+        return storeService.getJSON('chatHistory')
       })
   }
 
@@ -21,7 +22,6 @@ class MessageService {
   }
 
   saveMessages (messages) {
-    // this.messages = messages
     storeService.setJSON('chatHistory', messages)
   }
 }

@@ -32,21 +32,18 @@ npm run sass
 
 - [ ] use Firebase
 - [ ] fetch object create with defaults
-- [ ] catch fetch andd fallback to localStore
-- [ ] add dist to repo
 - [ ] last 30 messages
 - [ ] load more button
 - [ ] date divider and proper date in message history
-- [ ] build dist and bundle
 - [ ] idiomatic bem styles
 - [ ] webpack extended conf: sass, file loader, uglify, eslint
-- [ ] css include thru components
 - [ ] generic form component with extends (?)
 - [ ] JSDocs
 - [ ] docs for widget usage and requirements
 - [ ] Unit tests
 - [ ] chat inside milligram column + column-0 by default then toggle
 - [ ] textarea auto resize with text
+- [ ] errors thru toastr
 - [ ] loading... and button disables when fetching data
 - [ ] group chat
 - [ ] choose channels #general #botik p2p

@@ -13,7 +13,7 @@ module.exports = (function makeWebpackConfig () {
   }
 
   config.output = {
-    path: './dist',
+    path: 'dist/',
     filename: '[name].bundle.js',
     chunkFilename: '[name].bundle.js'
   }
@@ -36,6 +36,7 @@ module.exports = (function makeWebpackConfig () {
 
   config.devServer = {
     contentBase: './',
+    publicPath: '/dist/',
     stats: 'minimal'
   }
 

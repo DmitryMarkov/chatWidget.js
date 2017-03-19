@@ -25,7 +25,7 @@ class Chat {
 
     this.messageService.getMessageList()
       .then((res) => {
-        this.messages = res || []
+        this.messages = res// || []
         this.render()
         this._initComponents()
         if (!this.userName) {
