@@ -31,6 +31,8 @@ npm run sass
 ## TODO
 
 - [ ] use Firebase
+- [ ] fetch object create with defaults
+- [ ] catch fetch andd fallback to localStore
 - [ ] add dist to repo
 - [ ] last 30 messages
 - [ ] load more button

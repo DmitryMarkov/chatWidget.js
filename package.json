@@ -8,7 +8,7 @@
   "scripts": {
     "start": "npm run webpack",
     "webpack": "webpack-dev-server --open --history-api-fallback --inline --progress --hot",
-    "build": "rimraf dist && webpack --bail --progress --profile --hide-modules",
+    "build": "rimraf dist && npm run sass && webpack --bail --progress --profile --hide-modules",
     "lint": "./node_modules/.bin/eslint --quiet **/*.js; exit 0",
     "test": "echo \"Error: no test specified\" && exit 1",
     "sass": "sass --update chat:dist",
