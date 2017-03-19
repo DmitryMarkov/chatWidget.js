@@ -3,7 +3,6 @@
 /* eslint-disable no-unused-vars */
 let path = require('path')
 let webpack = require('webpack')
-// let appRoot = path.resolve(__dirname, '/dist')
 
 module.exports = (function makeWebpackConfig () {
   let config = {}
@@ -13,7 +12,7 @@ module.exports = (function makeWebpackConfig () {
   }
 
   config.output = {
-    path: 'dist/',
+    path: path.join(__dirname, '/dist'),
     filename: '[name].bundle.js',
     chunkFilename: '[name].bundle.js'
   }
