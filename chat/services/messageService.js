@@ -1,19 +1,31 @@
+import { storeService } from './storeService'
+
 class MessageService {
   constructor (options) {
-    this.messages = JSON.parse(window.sessionStorage.getItem('chatHistory') || '[]')
+    this.messages = storeService.getJSON('chatHistory')
   }
 
   getMessageList () {
+//    if (!this.messages.length) {
+//      this.messages = [
+//        {
+//          "text": "Привет, как дела?",
+//          "my": false,
+//          "date": "12:59"
+//        },
+//        {
+//          "text": "Нормально",
+//          "my": true,
+//          "date": "13:01"
+//        }
+//      ]
+//    }
     return this.messages
   }
 
-  addMessage (data) {
-    this.messages.unshift({ // unshift is no good
-      text: data.text,
-      my: data.my || false,
-      date: new Date().getHours() + ':' + new Date().getMinutes()
-    })
-    window.sessionStorage.setItem('chatHistory', JSON.stringify(this.messages))
+  saveMessages (messages) {
+    this.messages = messages
+    storeService.setJSON('chatHistory', messages)
   }
 }
 

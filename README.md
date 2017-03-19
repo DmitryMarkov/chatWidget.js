@@ -31,7 +31,6 @@ npm run sass
 
 ## TODO
 
-- [ ] Botik class
 - [ ] DataService class with fetch/json
 - [ ] use Firebase
 - [ ] last 30 messages
@@ -39,14 +38,14 @@ npm run sass
 - [ ] date divider and proper date in message history
 - [ ] build dist and bundle
 - [ ] add dist to repo
-- [ ] valid bem styles
+- [ ] idiomatic bem styles
 - [ ] webpack extended conf: sass, file loader, uglify, eslint
 - [ ] css include thru components
 - [ ] generic form component with extends (?)
 - [ ] JSDocs
-- [ ] docs for widget usage
+- [ ] docs for widget usage and requirements
 - [ ] Unit tests
-- [ ] chat inside mill column
+- [ ] chat inside milligram column
 - [ ] textarea auto resize with text
 - [ ] loading... and button disables when fetching data
 - [ ] group chat

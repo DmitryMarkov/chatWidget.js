@@ -1,25 +1,14 @@
 import { getRandomNumber } from '../../utils/util'
 
 class ChatBot {
-  constructor () {
-    this.answers = [
-      'Расскажи мне что-нибудь',
-      'Мне скучно',
-      'О чем ты думаешь?',
-      'Хочешь поговорить об этом?',
-      'Как ты провел свой день?',
-      'У тебя есть планы на завтрашний денёк?',
-      'Тебе нравится погода за окошком?',
-      'Во сколько ты проснулся?',
-      'Я тоже',
-      'Ага',
-      'И тебе',
-      'Хмм, интересненько...'
-    ]
-  }
-
-  getRandomAnswersList () {
-    return this.answers
+  constructor ({
+    audioService,
+    messageList,
+    botikService
+  }) {
+    this.answers = botikService.getRandomMessages()
+    this.messageList = messageList
+    this.audioService = audioService
   }
 
   answer (message) {

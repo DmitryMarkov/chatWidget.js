@@ -5,11 +5,10 @@ import MessageList from './components/message-list/messageList'
 import MessageForm from './components/message-form/messageForm'
 import MessageService from './services/messageService'
 import AudioService from './services/audioService'
+import BotikService from './services/botikService'
 import Botik from './components/botik/chatBot'
-import { getRandomNumber } from './utils/util'
+import { storeService } from './services/storeService'
 import EventMixin from './components/common/customEvents'
-
-const botikAnswers = new Botik().getRandomAnswersList()
 
 class Chat {
   constructor ({
@@ -21,8 +20,9 @@ class Chat {
     this.buttonEl = document.querySelector(buttonEl)
     this.isOpenedOnStart = isOpenedOnStart
 
-    this.userName = window.sessionStorage.getItem('chatWidgetName') || null
-    this.messages = JSON.parse(window.sessionStorage.getItem('chatHistory') || '[]')
+    // TODO get from service
+    this.userName = storeService.getItem('chatWidgetName')
+    this.messages = storeService.getJSON('chatHistory')
 
     this.render()
     this._initComponents()
@@ -36,9 +36,16 @@ class Chat {
       messages: this.messages,
       username: this.userName
     })
+    if (!this.isOpenedOnStart) {
+      this._onToggle()
+    }
   }
 
   _initComponents () {
+    this.messageService = new MessageService({})
+    this.audioService = new AudioService()
+    this.botikService = new BotikService()
+
     this.chatButton = new ChatButton({
       el: document.createElement('div'),
       parentEl: this.buttonEl,
@@ -54,34 +61,36 @@ class Chat {
       EventMixin
     })
     this.messageList = new MessageList({
-      el: this.el.querySelector('.chat__body')
+      el: this.el.querySelector('.chat__body'),
+      messageService: this.messageService
     })
-    this.messageService = new MessageService({})
 
-    this.audioService = new AudioService()
+    this.botik = new Botik({
+      audioService: this.audioService,
+      messageList: this.messageList,
+      botikService: this.botikService
+    })
   }
 
-  // move to ChatBot class
-  _botikAnswer (message) {
-    setTimeout(() => {
-      this.messageList.addMessage({
-        text: message || botikAnswers[getRandomNumber(botikAnswers.length)],
-        my: false
-      })
-      this.messageList.render()
-      this.audioService.play('receive_message')
-    }, 1500)
+  _initEvents () {
+    // do we need to add listeners to hidden elements? maybe on state change?
+    this.el.querySelector('.chat__login-button').addEventListener('click', this.loginForm.toggleModal)
+    this.loginForm.on('login', this._onLogin.bind(this))
+
+    this.messageForm.on('message', this._onMessage.bind(this))
+
+    this.chatButton.on('toggle', this._onToggle.bind(this))
   }
 
   _onLogin (e) {
     this.userName = e.detail.username
-    window.sessionStorage.setItem('chatWidgetName', this.userName)
+    storeService.setItem('chatWidgetName', this.userName)
 
     this.el.querySelector('.login-false').classList.toggle('hidden')
     this.el.querySelector('.login-true').classList.toggle('hidden')
 
     if (!this.messageList.getMessageList().length && this.userName) {
-      this._botikAnswer(`Привет, ${this.userName}!`)
+      this.botik.answer(`Привет, ${this.userName}!`)
     }
   }
 
@@ -91,27 +100,13 @@ class Chat {
       my: true
     })
     this.messageList.render()
-    this._botikAnswer()
+    this.botik.answer()
     this.audioService.play('send_message')
   }
 
   _onToggle () {
     this.el.classList.toggle('column-25')
     this.el.classList.toggle('column-0')
-  }
-
-  _initEvents () {
-    // this.chatShowHideButton = document.querySelector('.button__show-chat')
-    // toggleChat
-    // this.chatShowHideButton.addEventListener('click', this._showHideChat.bind(this))
-
-    // do we need to add listeners to hidden elements? maybe on state change?
-    this.el.querySelector('.chat__login-button').addEventListener('click', this.loginForm.toggleModal)
-    this.loginForm.on('login', this._onLogin.bind(this))
-
-    this.messageForm.on('message', this._onMessage.bind(this))
-
-    this.chatButton.on('toggle', this._onToggle.bind(this))
   }
 }
 

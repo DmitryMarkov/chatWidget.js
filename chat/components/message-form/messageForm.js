@@ -16,7 +16,6 @@ class MessageForm {
   }
 
   submitMessageForm (e) {
-    console.log(e.shiftKey, e.ctrlKey)
     if (e.charCode === 13 && e.shiftKey === false) {
       e.preventDefault()
       if (e.target.value.trim()) {

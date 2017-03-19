@@ -22,15 +22,21 @@ class ChatButton {
   render () {
     this.el.innerHTML = buttonTemplate()
     this.parentEl.appendChild(this.el)
+    if (!this.isOpenedOnStart) {
+      this._toggle(this.el.firstChild)
+    }
   }
 
   toggle (e) {
     e.preventDefault()
 
-    let el = e.target.closest('[data-action]')
+    this._toggle(e.target.closest('[data-action]'))
+    this.trigger('toggle')
+  }
+
+  _toggle (el) {
     el.firstChild.classList.toggle('fa-chevron-left')
     el.firstChild.classList.toggle('fa-chevron-right')
-    this.trigger('toggle')
   }
 }
 
