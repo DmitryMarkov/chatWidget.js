@@ -95,16 +95,23 @@ class Chat {
     this.audioService.play('send_message')
   }
 
+  _onToggle () {
+    this.el.classList.toggle('column-25')
+    this.el.classList.toggle('column-0')
+  }
+
   _initEvents () {
     // this.chatShowHideButton = document.querySelector('.button__show-chat')
     // toggleChat
     // this.chatShowHideButton.addEventListener('click', this._showHideChat.bind(this))
 
+    // do we need to add listeners to hidden elements? maybe on state change?
     this.el.querySelector('.chat__login-button').addEventListener('click', this.loginForm.toggleModal)
-
     this.loginForm.on('login', this._onLogin.bind(this))
 
     this.messageForm.on('message', this._onMessage.bind(this))
+
+    this.chatButton.on('toggle', this._onToggle.bind(this))
   }
 }
 

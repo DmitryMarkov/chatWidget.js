@@ -16,7 +16,7 @@ npm start
 
 lint project files
 ```bash
-npm run eslint
+npm run lint
 ```
 
 run unit testing
@@ -31,9 +31,7 @@ npm run sass
 
 ## TODO
 
-- [ ] Optimize toggle chat
 - [ ] Botik class
-- [ ] chat inside mill column
 - [ ] DataService class with fetch/json
 - [ ] use Firebase
 - [ ] last 30 messages
@@ -48,6 +46,7 @@ npm run sass
 - [ ] JSDocs
 - [ ] docs for widget usage
 - [ ] Unit tests
+- [ ] chat inside mill column
 - [ ] textarea auto resize with text
 - [ ] loading... and button disables when fetching data
 - [ ] group chat

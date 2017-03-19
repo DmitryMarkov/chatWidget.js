@@ -15,6 +15,7 @@ There is no Semantic Versioning yet
 - [x] check empty inputs
 - [x] chat with me button closed setting (default: false)
 - [x] show/hide button component with option el
+- [x] Optimize toggle chat
 
 #### 0.0.1 - 2017-03-13
 

@@ -7,10 +7,13 @@ class ChatButton {
     isOpenedOnStart = true,
     EventMixin
   }) {
+    // adding on() and trigger() methods
+    EventMixin.apply(this)
+
     this.el = el
+    this.el.classList.add('show__button')
     this.parentEl = parentEl
     this.isOpenedOnStart = isOpenedOnStart
-    this.el.classList.add('show__button')
 
     this.render()
     this.el.addEventListener('click', this.toggle.bind(this))
@@ -22,20 +25,12 @@ class ChatButton {
   }
 
   toggle (e) {
-    console.log(this)
-  }
-
-  showHide (e) {
     e.preventDefault()
 
-    /* Can we do better? */
-    let applyEl = e.target
-    if (e.target.tagName !== 'BUTTON') applyEl = e.target.parentNode
-    applyEl.innerHTML = applyEl.innerHTML === '<i class="fa fa-chevron-left"></i>' ? '<i class="fa fa-chevron-right"></i>' : '<i class="fa fa-chevron-left"></i>'
-
-    // made to parent
-    // this.el.classList.toggle('column-25')
-    // this.el.classList.toggle('column-0')
+    let el = e.target.closest('[data-action]')
+    el.firstChild.classList.toggle('fa-chevron-left')
+    el.firstChild.classList.toggle('fa-chevron-right')
+    this.trigger('toggle')
   }
 }
 
