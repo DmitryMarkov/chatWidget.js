@@ -22,6 +22,10 @@ class MessageList {
     })
   }
 
+  getLocalMessages () {
+    return this.messages
+  }
+
   setMessages (messages) {
     this.messages = messages
   }

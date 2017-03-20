@@ -11,7 +11,7 @@ import MessageForm from './components/message-form/messageForm'
 import Botik from './components/botik/chatBot'
 
 import { storeService } from './services/storeService'
-import { formatDate } from './utils/util'
+import { formatDate, deepEqual } from './utils/util'
 import EventMixin from './components/common/customEvents'
 
 class Chat {
@@ -24,6 +24,7 @@ class Chat {
     this.buttonEl = document.querySelector(buttonEl)
     this.isOpenedOnStart = isOpenedOnStart
 
+    this._initToggleButton()
     this._init()
   }
 
@@ -52,17 +53,16 @@ class Chat {
     this.messageService.getMessageList()
       .then((res) => {
         this.messages = res
-        // console.log(res)
         this.render()
-        this._initComponents()
         if (!this.userName) {
-          this.el.appendChild(this.loginForm.el)
+          this._initLoginComponent()
+        } else {
+          this._initComponents()
+          this._initEvents()
         }
         if (this.chatGroup !== 'botik') {
           this.startPolling()
         }
-
-        this._initEvents()
       })
   }
 
@@ -75,7 +75,7 @@ class Chat {
     this.botikService = new BotikService()
   }
 
-  _initComponents () {
+  _initToggleButton () {
     this.chatButton = new ChatButton({
       el: document.createElement('div'),
       parentEl: this.buttonEl,
@@ -83,15 +83,28 @@ class Chat {
       EventMixin
     })
 
-    // maybe we should not create instance if already logged in
+    this.chatButton.on('toggle', this._onToggle.bind(this))
+  }
+
+  _initLoginComponent () {
     this.loginForm = new LoginForm({
       el: document.createElement('div'),
       EventMixin
     })
+
+    this.el.appendChild(this.loginForm.el)
+
+    this.el.querySelector('.chat__login-button').addEventListener('click', this.loginForm.toggleModal)
+
+    this.loginForm.on('login', this._onLogin.bind(this))
+  }
+
+  _initComponents () {
     this.messageForm = new MessageForm({
       el: this.el.querySelector('.chat__form'),
       EventMixin
     })
+
     this.messageList = new MessageList({
       el: this.el.querySelector('.chat__body'),
       username: this.userName,
@@ -107,17 +120,9 @@ class Chat {
   }
 
   _initEvents () {
-    if (!this.userName) {
-      this.el.querySelector('.chat__login-button').addEventListener('click', this.loginForm.toggleModal)
-    }
-
     this.el.querySelector('.header__name').addEventListener('click', this._changeGroup.bind(this))
 
-    this.loginForm.on('login', this._onLogin.bind(this))
-
     this.messageForm.on('message', this._onMessage.bind(this))
-
-    this.chatButton.on('toggle', this._onToggle.bind(this))
   }
 
   _changeGroup (e) {
@@ -143,6 +148,9 @@ class Chat {
     this.el.querySelector('.login-false').classList.toggle('hidden')
     this.el.querySelector('.login-true').classList.toggle('hidden')
 
+    this._initComponents()
+    this._initEvents()
+
     if (!this.messages.length && this.userName) {
       this.botik.answer(`Привет, ${this.userName}!`)
     }
@@ -165,12 +173,17 @@ class Chat {
 
   startPolling () {
     this.__pollingID = setInterval(() => {
+      console.log('polling...')
       this.messageService.getMessageList()
         .then((res) => {
-          console.log(res)
-          // TODO: implement messageList update
-          // this.messageList.setMessages(res)
-          // this.messageList.render()
+          if (!deepEqual(this.messageList.getLocalMessages(), res)) {
+            console.log('ch-ch-changes!')
+            this.messageList.setMessages(res)
+            this.messageList.render()
+            if (this.messageList.getLocalMessages()[0].name !== this.userName) {
+              this.audioService.play('receive_message')
+            }
+          }
         })
     }, 4000)
   }

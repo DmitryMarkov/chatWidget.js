@@ -33,6 +33,7 @@ npm run sass
 - [ ] last 30 messages
 - [ ] load more button
 - [ ] date divider and proper date in message history
+- [ ] Botik AI
 - [ ] idiomatic bem styles
 - [ ] webpack extended conf: sass, file loader, uglify, eslint
 - [ ] JSDocs
@@ -47,6 +48,7 @@ npm run sass
 - [ ] errors thru toastr
 - [ ] loading... and button disables when fetching data
 - [ ] choose channels #general #botik p2p
+- [ ] user auth
 - [ ] user lists and p2p choose
 - [ ] auto-generated avatars
 - [ ] replace emojis

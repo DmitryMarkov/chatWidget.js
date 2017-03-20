@@ -17,3 +17,13 @@ export function formatDate (dateString) {
   const formattedDate = dateObj.getHours() + ':' + dateObj.getMinutes()
   return formattedDate
 }
+
+/**
+ * Deep equal arrays
+ * @param {array} src - first array
+ * @param {array} dest - second array
+ * @returns {boolean} true if qual
+ */
+export function deepEqual (src, dest) {
+  return JSON.stringify(src) === JSON.stringify(dest)
+}
