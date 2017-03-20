@@ -128,7 +128,7 @@ class Chat {
   _changeGroup (e) {
     e.preventDefault()
     const el = e.target.closest('[data-action]')
-    if (!el.classList.contains('active')) {
+    if (el !== null && !el.classList.contains('active')) {
       [...el.parentNode.children].forEach((child) => {
         child.classList.toggle('active')
       })

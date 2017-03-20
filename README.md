@@ -30,6 +30,7 @@ npm run sass
 
 ## TODO
 
+- [ ] main.js:131 Uncaught TypeError: Cannot read property 'classList' of null at Chat._changeGroup
 - [ ] last 30 messages
 - [ ] load more button
 - [ ] date divider and proper date in message history
@@ -44,6 +45,7 @@ npm run sass
 - [ ] config.js with baseUrl, appName, etc...
 - [ ] chat inside milligram column + column-0 by default then toggle
 - [ ] chat window width resize
+- [ ] inread messages indicator
 - [ ] textarea auto resize with text
 - [ ] errors thru toastr
 - [ ] loading... and button disables when fetching data
@@ -56,12 +58,15 @@ npm run sass
 - [ ] prefixes 'appName-' in storeService
 - [ ] my own background
 - [ ] e2e tests
+- [ ] major browsers test: IE, Chtome, FF, Safari
 - [ ] websockets
+- [ ] user writing a message... message
 - [ ] autoload previous messages - infinite scroll
 - [ ] chat menu - about, settings, logout
 - [ ] security and publish check-list
 - [ ] polyfills for features like fetch and web API
 - [ ] pouchDB local cache
+- [ ] mobile version
 - [ ] readme usage and requirements
 - [ ] semver
 - [ ] travis-ci

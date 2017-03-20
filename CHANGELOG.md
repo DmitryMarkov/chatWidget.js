@@ -26,6 +26,10 @@ There is no Semantic Versioning yet
 - [x] group chat
 - [x] fetch: object create with defaults
 
+Fixed
+
+- [x] main.js:131 Uncaught TypeError: Cannot read property 'classList' of null at Chat._changeGroup
+
 #### 0.0.1 - 2017-03-13
 
 - [x] overflow-y
