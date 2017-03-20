@@ -30,7 +30,17 @@ class MessageService {
     }
   }
 
-  saveMessages (messages) {
+  saveMessages (messages, message) {
+    if (this.chatGroup !== 'botik') {
+      fetch(this.baseUrl, {
+        method: 'POST',
+        body: JSON.stringify(message)
+      }).then((response) => {
+        console.log(response)
+      }).catch((err) => {
+        console.log(err)
+      })
+    }
     storeService.setJSON(`chatHistory-${this.chatGroup}`, messages)
   }
 }

@@ -24,6 +24,7 @@ There is no Semantic Versioning yet
 - [x] css include thru components
 - [x] use Firebase
 - [x] group chat
+- [x] fetch: object create with defaults
 
 #### 0.0.1 - 2017-03-13
 

@@ -30,7 +30,6 @@ npm run sass
 
 ## TODO
 
-- [ ] fetch: object create with defaults
 - [ ] last 30 messages
 - [ ] load more button
 - [ ] date divider and proper date in message history
@@ -38,9 +37,12 @@ npm run sass
 - [ ] webpack extended conf: sass, file loader, uglify, eslint
 - [ ] JSDocs
 - [ ] docs for widget usage and requirements
+- [ ] error handling
 - [ ] Unit tests
 - [ ] async await functions
+- [ ] config.js with baseUrl, appName, etc...
 - [ ] chat inside milligram column + column-0 by default then toggle
+- [ ] chat window width resize
 - [ ] textarea auto resize with text
 - [ ] errors thru toastr
 - [ ] loading... and button disables when fetching data
@@ -49,12 +51,14 @@ npm run sass
 - [ ] auto-generated avatars
 - [ ] replace emojis
 - [ ] accent chat message corners
+- [ ] prefixes 'appName-' in storeService
 - [ ] my own background
 - [ ] e2e tests
 - [ ] websockets
 - [ ] autoload previous messages - infinite scroll
 - [ ] chat menu - about, settings, logout
 - [ ] security and publish check-list
+- [ ] polyfills for features like fetch and web API
 - [ ] pouchDB local cache
 - [ ] readme usage and requirements
 - [ ] semver

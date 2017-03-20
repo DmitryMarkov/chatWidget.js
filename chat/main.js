@@ -1,12 +1,15 @@
 import chatTmpl from './main.pug'
+
+import MessageService from './services/messageService'
+import AudioService from './services/audioService'
+import BotikService from './services/botikService'
+
 import ChatButton from './components/chat-button/chatButton'
 import LoginForm from './components/login-form/loginForm'
 import MessageList from './components/message-list/messageList'
 import MessageForm from './components/message-form/messageForm'
-import MessageService from './services/messageService'
-import AudioService from './services/audioService'
-import BotikService from './services/botikService'
 import Botik from './components/botik/chatBot'
+
 import { storeService } from './services/storeService'
 import { formatDate } from './utils/util'
 import EventMixin from './components/common/customEvents'
@@ -54,6 +57,9 @@ class Chat {
         this._initComponents()
         if (!this.userName) {
           this.el.appendChild(this.loginForm.el)
+        }
+        if (this.chatGroup !== 'botik') {
+          this.startPolling()
         }
 
         this._initEvents()
@@ -123,6 +129,9 @@ class Chat {
       })
       storeService.setItem('chatWidgetGroup', el.dataset.action)
       this.chatGroup = el.dataset.action
+      if (this.chatGroup === 'botik') {
+        this.stopPolling()
+      }
       this._init()
     }
   }
@@ -152,6 +161,22 @@ class Chat {
   _onToggle () {
     this.el.classList.toggle('column-25')
     this.el.classList.toggle('column-0')
+  }
+
+  startPolling () {
+    this.__pollingID = setInterval(() => {
+      this.messageService.getMessageList()
+        .then((res) => {
+          console.log(res)
+          // TODO: implement messageList update
+          // this.messageList.setMessages(res)
+          // this.messageList.render()
+        })
+    }, 4000)
+  }
+
+  stopPolling () {
+    clearInterval(this.__pollingID)
   }
 }
 

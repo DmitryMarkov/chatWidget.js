@@ -22,17 +22,18 @@ class MessageList {
     })
   }
 
-//  getMessageList () {
-//    return this.messages
-//  }
+  setMessages (messages) {
+    this.messages = messages
+  }
 
   addMessage (data) {
-    this.messages.unshift({ // unshift is no good
+    const message = { // unshift is no good
       text: data.text,
       name: data.name || this.username,
       date: Date.now()
-    })
-    this.messageService.saveMessages(this.messages)
+    }
+    this.messages.unshift(message)
+    this.messageService.saveMessages(this.messages, message)
   }
 }
 
