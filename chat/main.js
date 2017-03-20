@@ -8,6 +8,7 @@ import AudioService from './services/audioService'
 import BotikService from './services/botikService'
 import Botik from './components/botik/chatBot'
 import { storeService } from './services/storeService'
+import { formatDate } from './utils/util'
 import EventMixin from './components/common/customEvents'
 
 class Chat {
@@ -20,17 +21,14 @@ class Chat {
     this.buttonEl = document.querySelector(buttonEl)
     this.isOpenedOnStart = isOpenedOnStart
 
-    this._initServices()
-    this.userName = storeService.getItem('chatWidgetName')
-    this.chatGroup = storeService.getItem('chatWidgetGroup') || 'botik'
-
     this._init()
   }
 
   render () {
     this.el.innerHTML = chatTmpl({
       messages: this.messages,
-      username: this.userName
+      username: this.userName,
+      formatDate: formatDate
     })
 
     if (!this.isOpenedOnStart) {
@@ -43,6 +41,11 @@ class Chat {
   }
 
   _init () {
+    this.userName = storeService.getItem('chatWidgetName')
+    this.chatGroup = storeService.getItem('chatWidgetGroup') || 'botik'
+
+    this._initServices()
+
     this.messageService.getMessageList()
       .then((res) => {
         this.messages = res
@@ -85,6 +88,7 @@ class Chat {
     })
     this.messageList = new MessageList({
       el: this.el.querySelector('.chat__body'),
+      username: this.userName,
       messages: this.messages,
       messageService: this.messageService
     })
@@ -138,10 +142,10 @@ class Chat {
   _onMessage (e) {
     this.messageList.addMessage({
       text: e.detail.text,
-      my: true
+      name: this.userName
     })
     this.messageList.render()
-    this.botik.answer()
+    if (this.chatGroup === 'botik') this.botik.answer()
     this.audioService.play('send_message')
   }
 

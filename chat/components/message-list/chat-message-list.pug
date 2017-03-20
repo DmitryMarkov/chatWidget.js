@@ -1,4 +1,5 @@
 each message in messages
-  div.chat__message(class=message.my ? 'chat__message-my' : '')
+  div.chat__message(class=message.name === username ? 'chat__message-my' : '')
+    div.message__time=message.name === username ? '' : message.name
     div=message.text
-    div.message__time.float-right=message.date
+    div.message__time.float-right=formatDate(message.date)

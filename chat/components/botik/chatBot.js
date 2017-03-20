@@ -15,7 +15,7 @@ class ChatBot {
     setTimeout(() => {
       this.messageList.addMessage({
         text: message || this.answers[getRandomNumber(this.answers.length)],
-        my: false
+        name: 'botik'
       })
       this.messageList.render()
       this.audioService.play('receive_message')

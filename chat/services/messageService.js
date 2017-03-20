@@ -3,9 +3,11 @@ import { storeService } from './storeService'
 
 class MessageService {
   constructor ({
-    baseUrl
+    baseUrl,
+    chatGroup
   }) {
     this.baseUrl = baseUrl
+    this.chatGroup = chatGroup
   }
 
   _request () {
@@ -14,16 +16,22 @@ class MessageService {
       .then((json) => Object.values(json).reverse())
       .catch((err) => {
         console.log(err)
-        return storeService.getJSON('chatHistory')
+        return storeService.getJSON(`chatHistory-${this.chatGroup}`)
       })
   }
 
   getMessageList () {
-    return this._request()
+    if (this.chatGroup !== 'botik') {
+      return this._request()
+    } else {
+      return new Promise((resolve) => {
+        resolve(storeService.getJSON(`chatHistory-${this.chatGroup}`))
+      })
+    }
   }
 
   saveMessages (messages) {
-    storeService.setJSON('chatHistory', messages)
+    storeService.setJSON(`chatHistory-${this.chatGroup}`, messages)
   }
 }
 

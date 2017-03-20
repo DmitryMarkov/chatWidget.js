@@ -22,6 +22,8 @@ There is no Semantic Versioning yet
 - [x] add dist to repo
 - [x] build dist and bundle
 - [x] css include thru components
+- [x] use Firebase
+- [x] group chat
 
 #### 0.0.1 - 2017-03-13
 

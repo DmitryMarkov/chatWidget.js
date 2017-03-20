@@ -30,14 +30,12 @@ npm run sass
 
 ## TODO
 
-- [ ] use Firebase
 - [ ] fetch: object create with defaults
 - [ ] last 30 messages
 - [ ] load more button
 - [ ] date divider and proper date in message history
 - [ ] idiomatic bem styles
 - [ ] webpack extended conf: sass, file loader, uglify, eslint
-- [ ] generic form component with extends (?)
 - [ ] JSDocs
 - [ ] docs for widget usage and requirements
 - [ ] Unit tests
@@ -46,7 +44,6 @@ npm run sass
 - [ ] textarea auto resize with text
 - [ ] errors thru toastr
 - [ ] loading... and button disables when fetching data
-- [ ] group chat
 - [ ] choose channels #general #botik p2p
 - [ ] user lists and p2p choose
 - [ ] auto-generated avatars
