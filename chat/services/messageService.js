@@ -9,8 +9,9 @@ class MessageService {
   }
 
   _request () {
-    return fetch('chat/services/mockMessages.json')
+    return fetch(this.baseUrl) // 'chat/services/mockMessages.json'
       .then((response) => response.json())
+      .then((json) => Object.values(json).reverse())
       .catch((err) => {
         console.log(err)
         return storeService.getJSON('chatHistory')

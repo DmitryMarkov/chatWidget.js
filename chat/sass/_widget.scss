@@ -51,6 +51,21 @@
       margin-bottom: -14px;
       font-weight: 700;
       flex: 1 1 auto;
+
+      a {
+        color: #ffffff;
+        text-decoration: underline;
+
+        &:hover {
+          color: gold;
+        }
+
+        &.active {
+          text-decoration: none;
+          color: gold;
+          cursor: default;
+        }
+      }
     }
   }
 

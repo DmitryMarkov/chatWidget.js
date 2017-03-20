@@ -22,10 +22,31 @@ class Chat {
 
     this._initServices()
     this.userName = storeService.getItem('chatWidgetName')
+    this.chatGroup = storeService.getItem('chatWidgetGroup') || 'botik'
 
+    this._init()
+  }
+
+  render () {
+    this.el.innerHTML = chatTmpl({
+      messages: this.messages,
+      username: this.userName
+    })
+
+    if (!this.isOpenedOnStart) {
+      this._onToggle()
+    }
+
+    [...this.el.querySelectorAll('.header__name a')].forEach((el) => {
+      if (el.dataset.action === this.chatGroup) el.classList.add('active')
+    })
+  }
+
+  _init () {
     this.messageService.getMessageList()
       .then((res) => {
-        this.messages = res// || []
+        this.messages = res
+        // console.log(res)
         this.render()
         this._initComponents()
         if (!this.userName) {
@@ -36,19 +57,10 @@ class Chat {
       })
   }
 
-  render () {
-    this.el.innerHTML = chatTmpl({
-      messages: this.messages,
-      username: this.userName
-    })
-    if (!this.isOpenedOnStart) {
-      this._onToggle()
-    }
-  }
-
   _initServices () {
     this.messageService = new MessageService({
-      baseUrl: 'https://components-1601-1930.firebaseio.com/chat/messages.json'
+      baseUrl: 'https://components-1601-1930.firebaseio.com/chat/messages.json',
+      chatGroup: this.chatGroup
     })
     this.audioService = new AudioService()
     this.botikService = new BotikService()
@@ -89,11 +101,26 @@ class Chat {
       this.el.querySelector('.chat__login-button').addEventListener('click', this.loginForm.toggleModal)
     }
 
+    this.el.querySelector('.header__name').addEventListener('click', this._changeGroup.bind(this))
+
     this.loginForm.on('login', this._onLogin.bind(this))
 
     this.messageForm.on('message', this._onMessage.bind(this))
 
     this.chatButton.on('toggle', this._onToggle.bind(this))
+  }
+
+  _changeGroup (e) {
+    e.preventDefault()
+    const el = e.target.closest('[data-action]')
+    if (!el.classList.contains('active')) {
+      [...el.parentNode.children].forEach((child) => {
+        child.classList.toggle('active')
+      })
+      storeService.setItem('chatWidgetGroup', el.dataset.action)
+      this.chatGroup = el.dataset.action
+      this._init()
+    }
   }
 
   _onLogin (e) {

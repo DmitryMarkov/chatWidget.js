@@ -1,11 +1,11 @@
 'use strict'
 
 /* eslint-disable no-unused-vars */
-let path = require('path')
-let webpack = require('webpack')
+const path = require('path')
+const webpack = require('webpack')
 
 module.exports = (function makeWebpackConfig () {
-  let config = {}
+  const config = {}
 
   config.entry = {
     app: './app.js'

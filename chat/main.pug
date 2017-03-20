@@ -4,7 +4,10 @@ div.column-center.chat__app
   div.login-true(class=!username ? 'hidden' : '')
     div.chat__header
       i.fa.fa-user-circle-o.header__avatar
-      p.header__name Chat with Botik
+      p.header__name Chat with
+        a(href='#', data-action='botik') Botik
+        | &nbsp; | &nbsp;
+        a(href='#', data-action='group') Group
     div.chat__body
       include components/message-list/chat-message-list.pug
     div.chat__footer

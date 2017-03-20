@@ -31,7 +31,7 @@ npm run sass
 ## TODO
 
 - [ ] use Firebase
-- [ ] fetch object create with defaults
+- [ ] fetch: object create with defaults
 - [ ] last 30 messages
 - [ ] load more button
 - [ ] date divider and proper date in message history
@@ -41,6 +41,7 @@ npm run sass
 - [ ] JSDocs
 - [ ] docs for widget usage and requirements
 - [ ] Unit tests
+- [ ] async await functions
 - [ ] chat inside milligram column + column-0 by default then toggle
 - [ ] textarea auto resize with text
 - [ ] errors thru toastr
