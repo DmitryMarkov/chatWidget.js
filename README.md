@@ -30,7 +30,8 @@ npm run sass
 
 ## TODO
 
-- [ ] main.js:131 Uncaught TypeError: Cannot read property 'classList' of null at Chat._changeGroup
+- [ ] Uncaught (in promise) TypeError: Cannot read property 'name' of undefined
+    at main.js:183 (GET https://components-1601-1930.firebaseio.com/chat/messages.json 500 (Internal Server Error) _request @ messageService.js:14 getMessageList @ messageService.js:25 (anonymous) @ main.js:177 messageService.js:18 SyntaxError: Unexpected end of JSON input)
 - [ ] last 30 messages
 - [ ] load more button
 - [ ] date divider and proper date in message history
@@ -58,7 +59,7 @@ npm run sass
 - [ ] prefixes 'appName-' in storeService
 - [ ] my own background
 - [ ] e2e tests
-- [ ] major browsers test: IE, Chtome, FF, Safari
+- [ ] major browsers test: IE, Edge, Chrome, FF, Safari
 - [ ] websockets
 - [ ] user writing a message... message
 - [ ] autoload previous messages - infinite scroll
