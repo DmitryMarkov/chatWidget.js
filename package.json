@@ -1,6 +1,6 @@
 {
-  "name": "chatWidget.js",
-  "version": "0.0.1",
+  "name": "chat-widget",
+  "version": "0.0.3",
   "description": "Chat Widget in vanilla Javascript",
   "main": "app.js",
   "homepage": "https://dmitrymarkov.github.io/chatWidget.js",
