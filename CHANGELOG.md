@@ -2,6 +2,12 @@
 
 There is no Semantic Versioning yet
 
+#### 0.0.3 - 2019-01-05
+- [x] Update vulnerable packages
+- [x] Update packages and build scripts
+- [x] Fix typos
+- [x] Add yarn.lock file
+
 #### 0.0.2 - 2017-03-20
 
 - [x] Move to my repo
@@ -10,7 +16,7 @@ There is no Semantic Versioning yet
 - [x] es6 modules
 - [x] refactor components structure + pug + spec files + images, sound + common
 - [x] AudioService
-- [x] Util class: math.random, date frmatting
+- [x] Util class: math.random, date formatting
 - [x] Event apply class
 - [x] check empty inputs
 - [x] chat with me button closed setting (default: false)
