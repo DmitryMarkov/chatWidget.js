@@ -4,6 +4,7 @@ There is no Semantic Versioning yet
 
 #### 0.0.3 - 2019-01-05
 - [x] Update vulnerable packages
+- [x] Update packages and build scripts
 - [x] Fix typos
 - [x] Add yarn.lock file
 
