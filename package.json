@@ -19,6 +19,9 @@
   ],
   "author": "Dmitry Markov",
   "license": "GPL-3.0",
+  "resolutions": {
+    "lodash": ">=4.17.15"
+  },
   "dependencies": {},
   "devDependencies": {
     "babel-core": "^6.2.1",
